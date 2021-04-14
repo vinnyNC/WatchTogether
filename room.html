@@ -23,11 +23,18 @@
 <!-- Content -->
 <div id="pageContent">
     <div id="video_area" class="main-preview-player">
-        <video id="videoPlayer" vjs-big-play-centered vjs-16-9 controls preload="true" autoplay="true" crossOrigin="anonymous" class="video-js" data-setup='{"fluid": true}'></video>
+        <video id="videoPlayer" controls preload="true" autoplay="true" muted crossOrigin="anonymous" class="video-js vjs-default-skin vjs-big-play-centered matchFlex" ></video>
+        <div id="chat_area">
+            <div id="chat">
+
+            </div>
+            <div id="chat_input" class="matchFlex">
+                <input type="text" placeholder="Chat Message" id="chatText" />
+                <input type="button" value="Send" id="chatSendBtn" />
+            </div>
+        </div>
     </div>
-    <div id="chat_area">
-        test
-    </div>
+
 </div>
 
 <!--End of Content -->
@@ -71,12 +78,14 @@
 <div id="login_modal" class="modal">
     <div id="login_form">
         <div id="login_msg_area"></div>
-        <p><label for="login_username">Username</label><br/>
-            <input type="text" id="login_username" placeholder="Username" value=""/></p>
-        <p><label for="login_password">Password</label><br/>
-            <input type="password" id="login_password" placeholder="Password" value=""/> <br/></p>
-        <p><input type="button" id="login_submit" value="Login" /></p>
-        <p><input type="button" id="login_register" class="button_warning" value="Register" /></p>
+        <form>
+            <p><label for="login_username">Username</label><br/>
+                <input type="text" id="login_username" placeholder="Username" value="" autocomplete="username"/></p>
+            <p><label for="login_password">Password</label><br/>
+                <input type="password" id="login_password" placeholder="Password" value="" autocomplete="password"/> <br/></p>
+            <p><input type="button" id="login_submit" value="Login" /></p>
+            <p><input type="button" id="login_register" class="button_warning" value="Register" /></p>
+        </form>
     </div>
 </div>
 </html>
