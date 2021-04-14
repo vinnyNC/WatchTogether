@@ -21,8 +21,14 @@
     </div>
 </ul>
 <!-- Content -->
-<a href="room.html">Link for testing...</a>
-
+<div id="pageContent">
+    <div id="video_area" class="main-preview-player">
+        <video id="videoPlayer" vjs-big-play-centered vjs-16-9 controls preload="true" autoplay="true" crossOrigin="anonymous" class="video-js" data-setup='{"fluid": true}'></video>
+    </div>
+    <div id="chat_area">
+        test
+    </div>
+</div>
 
 <!--End of Content -->
 </body>
@@ -49,10 +55,13 @@
 <!-- References -->
 
 <link href="css/watch.css" rel="stylesheet" />
-<link href="css/index.css" rel="stylesheet" />
+<link href="css/room.css" rel="stylesheet" />
 <link href="css/video-js.css" rel="stylesheet" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/main.js"></script>
+<script src="js/videojs/video.js"></script>
+<script src="js/videojs/plugins/youtube/Youtube.js"></script>
+<script src="js/room.js"></script>
 
 <!-- jQuery Modal Plugin -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>

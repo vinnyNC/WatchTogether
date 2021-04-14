@@ -52,7 +52,8 @@ $(document).ready(function() {
 
     $v("nav_login").onclick = function () {
         event.preventDefault();
-        window.location.href = "login.html";
+        //window.location.href = "login.html";
+
     }
 
     $v("nav_register").onclick = function() {

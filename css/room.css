@@ -1,0 +1,24 @@
+#pageContent {
+    width: 100%;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 100px;
+}
+
+#video_area {
+    width: 68%;
+    background-color: red;
+    float: left;
+}
+
+#chat_area {
+    width: 30%;
+    background-color: blue;
+    float: right;
+}
+
+.main-preview-player {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

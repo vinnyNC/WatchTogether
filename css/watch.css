@@ -5,6 +5,14 @@ body {
     margin: 0;
 }
 
+a {
+    color: white;
+}
+
+a:visited {
+    color: white;
+}
+
 #navbar {
     list-style-type: none;
     background-color: #111A22;
@@ -12,6 +20,7 @@ body {
     padding: 0;
     width: 100%;
     overflow: hidden;
+    border-bottom: #000000 4px solid;
 }
 
 #logo {
@@ -55,6 +64,10 @@ body {
     width: 100%;
     overflow: auto;
 }
+#footer-wrapper {
+    padding: 0 0 100px;
+    position: relative;
+}
 
 #footer_default .footer_items {
     display: inline-block;
@@ -62,4 +75,72 @@ body {
     margin: 20px 10px 10px 10px;
     text-align: center;
     width: 30%;
+}
+
+input[type="email"] {
+    border-radius: 5px;
+    padding: 3px 0;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+input[type="text"] {
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 3px 0;
+}
+
+input[type="password"] {
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 3px 0;
+}
+
+input[type="button"] {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 4px 10px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 3px;
+    border: 0;
+    box-sizing: border-box;
+    background-color: #1da1f2;
+    cursor: pointer;
+}
+
+input[type="button"]:hover {
+    background-color: #1781C2;
+    box-shadow: 0 0 0pt 1pt #E8F6FE;
+}
+
+#contact_email, #contact_submit {
+    width: 50%;
+    text-align: center;
+}
+
+#login_form {
+    width: 100%;
+    text-align: center;
+}
+
+#login_username, #login_password, #login_submit, #login_register {
+    width: 50%;
+}
+
+.modal {
+    background-color: #15202b !important;
+    border: 1px solid white !important;
+    text-align: center !important;
+}
+
+.button_warning {
+    background-color: red !important;
+}
+
+.button_warning:hover {
+    background-color: #cc0000 !important;
 }
