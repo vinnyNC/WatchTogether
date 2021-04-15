@@ -1,0 +1,37 @@
+#indexRow_1 {
+    width: 100%;
+}
+
+#indexCol_1, #indexCol_2, #indexCol_3 {
+    width: 32%;
+}
+
+#indexCol_1 {
+    float: left;
+}
+
+#indexCol_3 {
+    float: right;
+    margin-right: 30px;
+}
+
+#indexAccordion {
+    border-radius: 6px;
+}
+
+#indexAccordion .ui-state-active {
+    background: #111A22;
+    box-shadow: 0 0 0pt 1pt #E8F6FE;
+    border: 1px solid white;
+}
+
+#indexAccordion .ui-state-default {
+    background: #1da1f2;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+#indexAccordion .ui-widget-content {
+    background: #15202b;
+    color: white;
+}
