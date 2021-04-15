@@ -21,7 +21,7 @@
 
 #indexAccordion .ui-state-active {
     background: #111A22;
-    box-shadow: 0 0 0pt 1pt #E8F6FE;
+    box-shadow: 0 0 0 1pt #E8F6FE;
     border: 1px solid white;
 }
 

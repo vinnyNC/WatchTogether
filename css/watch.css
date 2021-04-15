@@ -51,11 +51,11 @@ a:visited {
 
 .navItem a:hover {
     background-color: #1781C2;
-    box-shadow: 0 0 0pt 1pt #E8F6FE;
+    box-shadow: 0 0 0 1pt #E8F6FE;
 }
 
 .navActive {
-    box-shadow: 0 0 0pt 2pt #E8F6FE;
+    box-shadow: 0 0 0 2pt #E8F6FE;
     background-color: #1781C2 !important;
 }
 
@@ -115,7 +115,7 @@ input[type="button"] {
 
 input[type="button"]:hover {
     background-color: #1781C2;
-    box-shadow: 0 0 0pt 1pt #E8F6FE;
+    box-shadow: 0 0 0 1pt #E8F6FE;
 }
 
 #contact_email, #contact_submit {
