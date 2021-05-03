@@ -2,7 +2,11 @@ body {
     background-color: #15202b;
     color: white;
     width: 100%;
+    min-height: 100vh;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 a {
@@ -47,26 +51,23 @@ a:visited {
 
 .navItem a:hover {
     background-color: #1781C2;
-    box-shadow: 0 0 0pt 1pt #E8F6FE;
+    box-shadow: 0 0 0 1pt #E8F6FE;
 }
 
 .navActive {
-    box-shadow: 0 0 0pt 2pt #E8F6FE;
+    box-shadow: 0 0 0 2pt #E8F6FE;
     background-color: #1781C2 !important;
 }
 
 #footer_default {
-    position: fixed;
     background-color: #111A22;
     bottom: 0;
-    margin: 0px;
     border-top: #000000 4px solid;
     width: 100%;
-    overflow: auto;
-}
-#footer-wrapper {
-    padding: 0 0 100px;
-    position: relative;
+    margin-top: auto;
+    text-align: center;
+    flex-direction: row;
+    display: flex;
 }
 
 #footer_default .footer_items {
@@ -114,7 +115,7 @@ input[type="button"] {
 
 input[type="button"]:hover {
     background-color: #1781C2;
-    box-shadow: 0 0 0pt 1pt #E8F6FE;
+    box-shadow: 0 0 0 1pt #E8F6FE;
 }
 
 #contact_email, #contact_submit {
@@ -143,4 +144,12 @@ input[type="button"]:hover {
 
 .button_warning:hover {
     background-color: #cc0000 !important;
+}
+
+#content-wrap {
+}
+
+#pageContent {
+    flex: auto;
+    overflow: auto;
 }

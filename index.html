@@ -21,8 +21,33 @@
     </div>
 </ul>
 <!-- Content -->
-<a href="room.html">Link for testing...</a>
-
+<div id="pageContent">
+    <a href="room.html">Link for testing...</a><br>
+    <div id="indexRow_1">
+        <div id="indexCol_1"></div>
+        <div id="indexCol_2"></div>
+        <div id="indexCol_3">
+            <div id="indexAccordion">
+                <h3>Features</h3>
+                <div>
+                    <p>
+                        <ul>
+                            <li>Video sync with friends around the world</li>
+                            <li>Watch videos from YouTube</li>
+                            <li>Watch custom web formatted videos from custom links</li>
+                        </ul>
+                    </p>
+                </div>
+                <h3>Example Screenshot</h3>
+                <div>
+                    <p>
+                        <img src="images/example.png" alt="Example screenshot" width="100%"/>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!--End of Content -->
 </body>
@@ -53,21 +78,28 @@
 <link href="css/video-js.css" rel="stylesheet" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/main.js"></script>
+<script src="js/index.js"></script>
 
 <!-- jQuery Modal Plugin -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
+<!-- jQuery UI -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 <!-- Modal content -->
 <div id="login_modal" class="modal">
     <div id="login_form">
         <div id="login_msg_area"></div>
-        <p><label for="login_username">Username</label><br/>
-            <input type="text" id="login_username" placeholder="Username" value=""/></p>
-        <p><label for="login_password">Password</label><br/>
-            <input type="password" id="login_password" placeholder="Password" value=""/> <br/></p>
-        <p><input type="button" id="login_submit" value="Login" /></p>
-        <p><input type="button" id="login_register" class="button_warning" value="Register" /></p>
+        <form>
+            <p><label for="login_username">Username</label><br/>
+                <input type="text" id="login_username" placeholder="Username" value="" autocomplete="username"/></p>
+            <p><label for="login_password">Password</label><br/>
+                <input type="password" id="login_password" placeholder="Password" value="" autocomplete="password"/> <br/></p>
+            <p><input type="button" id="login_submit" value="Login" /></p>
+            <p><input type="button" id="login_register" class="button_warning" value="Register" /></p>
+        </form>
     </div>
 </div>
 </html>
