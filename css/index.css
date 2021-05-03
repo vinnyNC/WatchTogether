@@ -4,6 +4,8 @@
 
 #indexCol_1, #indexCol_2, #indexCol_3 {
     width: 32%;
+    font-weight: bold;
+    margin: 20px;
 }
 
 #indexCol_1 {
