@@ -1,6 +1,14 @@
 let $v = function (id) { return document.getElementById(id); };
 
 /**
+ * Variables we will use throughout the javascript file
+ */
+let roomID = "invalid";
+let socket = new WebSocket("ws://localhost:8887");
+let loStorage = window.localStorage;
+let UUID = loStorage.getItem("UUID");
+
+/**
  * Gets the current active page based on path
  */
 function getActive() {
@@ -28,7 +36,6 @@ function getActive() {
  */
 function getRoomFromURL() {
     let curPage = window.location.href;
-    console.log(curPage);
     if (curPage.includes("#")) {
         curPage = curPage.split("#").pop();
     } else {
@@ -73,4 +80,58 @@ $(document).ready(function() {
 
     //Execute functions
     getActive();
+    roomID = getRoomFromURL();
+
+    //Get user UUID
+    checkID();
+
 });
+
+
+//Socket functions
+/**
+ * Checks to see if a unique user ID exists or we generate it
+ */
+function checkID() {
+    if (loStorage.getItem("UUID") !== null) {
+        socketSendMessage("UUID: " + loStorage.getItem("UUID"));
+    } else {
+        socketSendMessage("UUID: generate");
+        console.log("Requesting UUID from server");
+    }
+}
+
+function waitForSocketConnection(socket, callback) {
+    setTimeout(
+        function () {
+            if (socket.readyState === 1) {
+                console.log("Server Connection Established");
+                if (callback != null) { callback(); }
+            } else {
+                console.log("Waiting for connection... readyState: " + socket.readyState);
+                if (socket.readyState === 3) {
+                    console.log("Failed to connect...");
+                } else {
+                    waitForSocketConnection(socket, callback);
+                }
+            }
+        }, 500);
+}
+
+function socketSendMessage(msg) {
+    waitForSocketConnection(socket, function() {
+        socket.send(msg);
+    })
+}
+
+socket.onmessage = function(event) {
+    let message = event.data;
+    console.log("[MSG REC] " + message);
+
+    if (message.includes("ASSIGN_USER_UUID")) {
+        message = message.split(":")
+        let userUUID = message[1].trim();
+        console.log("User UUID: " + userUUID);
+        loStorage.setItem("UUID", userUUID);
+    }
+}
