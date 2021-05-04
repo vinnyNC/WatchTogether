@@ -1,3 +1,5 @@
+
+
 $(document).ready(function() {
     let videoPlayer = videojs("videoPlayer");
     videoPlayer.crossOrigin = "anonymous";
@@ -12,5 +14,8 @@ $(document).ready(function() {
         let textVal = $v("chatText").value;
         $v("chatText").value = "";
         console.log("Sending: " + textVal);
+        socketSendMessage("CHAT_MSG: ['" + roomID + "', '" + textVal + "']");
     });
+    socketSendMessage("JOIN_ROOM: " + roomID);
+    console.log("Room ID: " + roomID);
 });
