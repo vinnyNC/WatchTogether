@@ -133,5 +133,7 @@ socket.onmessage = function(event) {
         let userUUID = message[1].trim();
         console.log("User UUID: " + userUUID);
         loStorage.setItem("UUID", userUUID);
+    } else if (message.includes("[ROOM_LIST]")) {
+
     }
 }
