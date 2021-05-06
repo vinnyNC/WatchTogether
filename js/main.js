@@ -135,5 +135,16 @@ socket.onmessage = function(event) {
         loStorage.setItem("UUID", userUUID);
     } else if (message.includes("[ROOM_LIST]")) {
         printRoomList(message);
+    } else if (message.includes("isOwner")) {
+        makeOwner();
+    } else if (message.includes("[ROOM_CMD]")) {
+        if (!isOwner) {
+            manageCMD(message.substring(message.indexOf("'") + 1, message.indexOf("'", message.indexOf("'") + 1)));
+        }
+    } else if (message.includes("[CHAT_MSG]")) {
+        let author = message.substring(message.indexOf("'") + 1, message.indexOf("]", message.indexOf("G") + 3) - 1);
+        let chatmsg = message.substring(message.indexOf("]", message.indexOf("G") + 3) + 2);
+
+        addChatMsg(author + ": " + chatmsg);
     }
 }

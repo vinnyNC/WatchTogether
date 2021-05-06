@@ -11,3 +11,12 @@
 #txtRoomID, #joinSubmit {
     width: 200px;
 }
+
+.err {
+    padding: 20px;
+    background-color: #f44336;
+    border-color: #A80000;
+    border: 3px;
+    border-radius: 5px;
+    color: white;
+}
