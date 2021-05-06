@@ -4,7 +4,7 @@ let $v = function (id) { return document.getElementById(id); };
  * Variables we will use throughout the javascript file
  */
 let roomID = "invalid";
-let socket = new WebSocket("ws://localhost:8887");
+let socket = new WebSocket("ws://5.252.162.201:8887");
 let loStorage = window.localStorage;
 let UUID = loStorage.getItem("UUID");
 
@@ -45,6 +45,11 @@ function getRoomFromURL() {
 }
 
 $(document).ready(function() {
+
+    //Clear btns
+    //document.getElementById("nav_account").innerHTML = "";
+    document.getElementById("nav_login").style.visibility = "hidden";
+    document.getElementById("nav_register").style.visibility = "hidden";
 
     //Set events
     $v("nav_home").onclick = function(event) {

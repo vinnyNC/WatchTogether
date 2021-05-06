@@ -55,7 +55,6 @@
     display: flex;
     float: left;
     border-right: #000000 2px solid;
-    pointer-events: none;
 }
 
 #pageContent {

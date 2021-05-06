@@ -45,7 +45,11 @@ function manageCMD(cmd) {
     } else if (cmd.includes("src")) {
         let src = cmd.substring(cmd.indexOf(":", cmd.indexOf("'")));
         console.log("Changing Video SRC: " + src);
-        changeVideoSource(src);
+        if (lastSrvSrc === null || lastSrvSrc === "null") {
+            changeVideoSource("http://www.youtube.com/watch?v=tI1JGPhYBS8");
+        } else {
+            changeVideoSource(lastSrvSrc);
+        }
     }
 }
 
@@ -118,4 +122,5 @@ $(document).ready(function() {
     });
     socketSendMessage("JOIN_ROOM: " + roomID);
     console.log("Room ID: " + roomID);
+
 });
