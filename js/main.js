@@ -105,7 +105,7 @@ function waitForSocketConnection(socket, callback) {
     setTimeout(
         function () {
             if (socket.readyState === 1) {
-                console.log("Server Connection Established");
+                //console.log("Server Connection Established");
                 if (callback != null) { callback(); }
             } else {
                 console.log("Waiting for connection... readyState: " + socket.readyState);
@@ -120,6 +120,7 @@ function waitForSocketConnection(socket, callback) {
 
 function socketSendMessage(msg) {
     waitForSocketConnection(socket, function() {
+        console.log("Sending Socket MSG: " + msg);
         socket.send(msg);
     })
 }
@@ -141,10 +142,17 @@ socket.onmessage = function(event) {
         if (!isOwner) {
             manageCMD(message.substring(message.indexOf("'") + 1, message.indexOf("'", message.indexOf("'") + 1)));
         }
+
+        if (message.includes("src")) {
+            manageCMD(message.substring(message.indexOf("'") + 1, message.indexOf("'", message.indexOf("'") + 1)));
+        }
     } else if (message.includes("[CHAT_MSG]")) {
         let author = message.substring(message.indexOf("'") + 1, message.indexOf("]", message.indexOf("G") + 3) - 1);
         let chatmsg = message.substring(message.indexOf("]", message.indexOf("G") + 3) + 2);
-
         addChatMsg(author + ": " + chatmsg);
+    } else if (message.includes("JOIN_REQ_RESP")) {
+        joinResponse(message.substring(message.indexOf(":") + 1));
+    } else if (message.includes("CREATE_ROOM_SUCCESS")) {
+        createRoomRedirect(message.substring(message.indexOf(":") + 2));
     }
 }

@@ -2,6 +2,7 @@ let isOwner = false;
 let videoPlayer = null;
 let lastSrvTime = null;
 let lastSrvStatus = null;
+let lastSrvSrc = null;
 
 function makeOwner() {
     isOwner = true;
@@ -41,25 +42,40 @@ function manageCMD(cmd) {
         let srvTime = parseFloat(cmd.split(":")[1]);
         lastSrvTime = srvTime;
         checkVidTime(srvTime, "normal");
+    } else if (cmd.includes("src")) {
+        let src = cmd.substring(cmd.indexOf(":", cmd.indexOf("'")));
+        console.log("Changing Video SRC: " + src);
+        changeVideoSource(src);
     }
+}
+
+function changeVideoSource(src) {
+    lastSrvSrc = src;
+    videoPlayer.pause()
+    videoPlayer.crossOrigin = "anonymous";
+    videoPlayer.src([
+        {type: "video/youtube", src: src},
+    ]);
+    videoPlayer.load();
+    videoPlayer.play();
 }
 
 function checkVidTime(srvTime, reason) {
     let curTime = videoPlayer.currentTime();
     let dif = Math.abs(srvTime - curTime);
     console.log("Time dif: " + dif + " || CUR: " + curTime + " || srvTime: " + srvTime);
-    dif = dif - 0.5;
+    //dif = dif - 0.5;
 
     if (reason === "normal") {
-        if (dif > 3) {
+        if (dif > 5) {
             console.log("CHANGE TIME");
-            videoPlayer.currentTime(srvTime);
+            videoPlayer.currentTime(srvTime + 0.2);
             videoPlayer.load();
         }
     } else if (reason === "playState") {
         if (dif > 0.5) {
             console.log("CHANGE TIME");
-            videoPlayer.currentTime(srvTime);
+            videoPlayer.currentTime(srvTime + 0.2);
             videoPlayer.load();
         }
     }
@@ -67,21 +83,19 @@ function checkVidTime(srvTime, reason) {
 
 function addChatMsg(msg) {
     console.log(msg);
-    //document.getElementById("chat").innerHTML += msg + "<br>";
-
-    for (let i = 0; i < 200; i++) {
-        document.getElementById("chat").innerHTML += msg + "<br>";
-        document.getElementById("chat").scrollTop = document.getElementById("chat").scrollHeight;
-    }
+    document.getElementById("chat").innerHTML += msg + "<br>";
+    document.getElementById("chat").scrollTop = document.getElementById("chat").scrollHeight;
 
 }
 
 $(document).ready(function() {
     videoPlayer = videojs("videoPlayer");
-    videoPlayer.crossOrigin = "anonymous";
-    videoPlayer.src([
-        {type: "video/youtube", src: "http://www.youtube.com/watch?v=tI1JGPhYBS8"},
-    ]);
+    videoPlayer.volume(0.2);
+    if (lastSrvSrc === null) {
+        changeVideoSource("http://www.youtube.com/watch?v=tI1JGPhYBS8");
+    } else {
+        changeVideoSource(lastSrvSrc);
+    }
 
     videoPlayer.controlBar.progressControl.disable();
     videoPlayer.controlBar.playToggle.disable();
@@ -89,6 +103,7 @@ $(document).ready(function() {
     videoPlayer.load();
 
     videoPlayer.one("play", function() {
+        videoPlayer.play();
         console.log("Sending last SRV Status: " + lastSrvStatus);
         manageCMD(lastSrvStatus);
         console.log("Sending cur time: " + lastSrvTime);

@@ -37,10 +37,16 @@
 }
 
 #chatSendBtn {
-    height: 80%;
+    height: 29px;
     padding: 5px;
     margin: 5px;
     width: 10%;
+}
+
+#btnSourceModal {
+    height: 80%;
+    padding: 5px;
+    margin: 5px;
 }
 
 #videoPlayer {
@@ -49,6 +55,7 @@
     display: flex;
     float: left;
     border-right: #000000 2px solid;
+    pointer-events: none;
 }
 
 #pageContent {
